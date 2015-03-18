@@ -7,7 +7,7 @@
     <div id="header">
       <div>
         <h1><span class="underline"><a href="index.html" title="Retour à l'acceuil"> Biblio Liège</a></span></h1>
-        <p><a href="#"><img src="../img/Logo.png" alt="Logo BCO" /></a></p>
+        <p><a href="#"><img src="./img/Logo.png" alt="Logo BCO" /></a></p>
       </div>
     </div>      
     <div id="mainContent">

@@ -1,6 +1,6 @@
 <?php
 namespace Controllers;
-class Posts extends Base
+class Books extends Base
 {
 	private $postsModel = null;
 	public function __construct(){
@@ -10,11 +10,13 @@ class Posts extends Base
 		
 		$data=[];
 		$data['data'] = $this->postsModel->getBooks();
-		$data['data']['auteur']=$this->postsModel->getAuteur($data['data'][0]['auteur_id']);
-		$data['data']['maison']=$this->postsModel->getMaison($data['data'][0]['maison_id']);
-		$data['data']['type']=$this->postsModel->getType($data['data'][0]['type_id']);
-		$data['data']['genre']=$this->postsModel->getGenre($data['data'][0]['genre_id']);
-		$data['data']['biblio']=$this->postsModel->getBiblio($data['data'][0]['biblio_id']);
+		for ($i=0; $i<5; $i++) {
+		$data['data']['auteur'][$i]=$this->postsModel->getAuteur($data['data'][$i]['auteur_id']);
+		$data['data']['maison'][$i]=$this->postsModel->getMaison($data['data'][$i]['maison_id']);
+		$data['data']['type'][$i]=$this->postsModel->getType($data['data'][$i]['type_id']);
+		$data['data']['genre'][$i]=$this->postsModel->getGenre($data['data'][$i]['genre_id']);
+		$data['data']['biblio'][$i]=$this->postsModel->getBiblio($data['data'][$i]['biblio_id']);
+		}
 		$data['view'] ='default.php';
 		if(isset($_SESSION['connected']) || isset($_COOKIE['connected'])){
 			$data['connected'] = 'formConnected.php';
@@ -25,23 +27,8 @@ class Posts extends Base
 		return $data;
 	}
 	public function view(){
-		if ($_SERVER['REQUEST_METHOD'] != 'GET') {
-			die('pas du get');
-		}
-
-		else{
-			
-			if(!isset($_GET['id'])){
-				die('pas d\'id pour ce post');
-			}
-			if (!is_numeric($_GET['id'])) {
-				die('l\'id n\'est pas un nombre');
-			}
-			$id=$_GET['id'];
 			$data=[];
-			$data['data'] = $this->postsModel->getPost($id);
-			$data['categories'] = $this->postsModel->getCategories();
-			$data['view'] ='view_posts.php';
+			$data['view'] ='view_books.php';
 			if(isset($_SESSION['connected']) || isset($_COOKIE['connected'])){
 			$data['connected'] = 'formConnected.php';
 			}
@@ -49,7 +36,6 @@ class Posts extends Base
 				$data['connected'] = 'formNotConnected.php';
 			}
 			return $data;
-		}
 	}
 	public function update(){
 

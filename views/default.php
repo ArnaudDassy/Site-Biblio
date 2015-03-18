@@ -1,7 +1,7 @@
 <section>
   <div id="siteContent">
     <ol class="header">
-      <li><a href="index.html" class="selected">Acceuil</a></li><li><a href="book.html" title="Naviguer vers le catalogue des livres">Choisir son livre</a></li><li><a href="contact.html" title="En apprendre plus sur la bibliothèque">Choisir sa bibliothèque</a></li><li><a href="connect.html">Se connecter</a></li>
+      <li><a href="index.html" class="selected">Acceuil</a></li><li><a href="index.php?a=view&e=books" title="Naviguer vers le catalogue des livres">Choisir son livre</a></li><li><a href="contact.html" title="En apprendre plus sur la bibliothèque">Choisir sa bibliothèque</a></li><li><a href="connect.html">Se connecter</a></li>
 
     </ol>
     <div id="header">
@@ -19,11 +19,11 @@
           <ul>
             <?php for ($i=0; $i<5 ; $i++) : ?>
             <li>
-            <a href="index?a=view&e=book=&id=<?php echo $data['data'][0]['id'] ; ?>"><?php echo $data['data'][0]['titre'];?></a>
+            <a href="index.php?a=view&e=book=&id=<?php echo $data['data'][$i]['id'] ; ?>"><?php echo $data['data'][$i]['titre'];?></a>
             <span> de </span>
-            <a href="index.php?a=view&e=auteur&id=<?php echo $data['data'][0]['auteur_id'] ; ?>"><?php echo $data['data']['auteur']['nom'] ;?></a>
+            <a href="index.php?a=view&e=auteur&id=<?php echo $data['data'][$i]['auteur_id'] ; ?>"><?php echo $data['data']['auteur'][$i]['nom'] ;?></a>
             .<span>  Catégorie :</span> 
-            <a href="index.php?a=view&e=genre&id=<?php echo $data['data'][0]['genre_id']; ?>"><?php echo $data['data']['genre']['nom']; ?></a></li>
+            <a href="index.php?a=view&e=genre&id=<?php echo $data['data'][$i]['genre_id']; ?>"><?php echo $data['data']['genre'][$i]['nom']; ?></a></li>
           <?php endfor; ?>
           </ul>
           <form action="#">
