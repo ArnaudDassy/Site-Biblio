@@ -1,0 +1,273 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+body{
+	font-family: 'Lato', sans-serif;
+}
+
+ol.header{
+	width: 100%;
+}
+ol.header li{
+	display: inline-block;
+	width: 25%;
+}
+ol.header li a{
+	display: inline-block;
+	width: 100%;
+	padding:10px 0;
+	color: white;
+	text-decoration: none;
+	background-color: orange;
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+	font-weight: 500;
+	font-size: 1.5em;
+	transition:0.2s all linear;
+}
+ol.header li a:hover{
+	background-color: white;
+	color: orange;
+}
+ol.header li a.selected{
+	color: orange;
+	background-color: white;
+}
+#header{
+	width: 100%;
+	position: absolute;
+}
+#header div{
+	width: 115px;
+	margin: 0 auto;
+	border-top: none;
+	background-color: orange;
+	border-bottom-left-radius: 57.5px;
+	border-bottom-right-radius: 57.5px;
+	padding-bottom: 6px;
+}
+#header h1{
+	text-align: center;
+	padding-top: 12px;
+	
+	text-transform: uppercase;
+	font-weight: bold;
+	text-decoration: none;
+}
+#header h1 a{
+	color: white;
+	text-decoration: none;
+	font-family: 'Lato', sans-serif;
+}
+#header div p{
+	text-align: center;
+
+}
+#header div p img{
+	width: 100px;
+	transition:0.2s all linear;
+}
+#header div p img:hover{
+	transform:scale(1.1);
+}
+#mainContent{
+	clear: both;
+}
+.imgGallery{
+	width: 100%;
+	height: 280px;
+	background-image: url('../img/grass_and_sky2.jpg');
+	background-position: center;
+	background-size: 100%;
+}
+.DGRAD{
+	background:linear-gradient(orange, white);
+}
+#contentIndex{
+	border:5px solid orange;
+	border-radius: 25px;
+	padding: 24px 0;
+	width: 90%;
+	margin: 0 auto;
+	background-color: white;
+}
+#contentIndex h2,legend{
+	color: orange;
+	font-size: 1.5em;
+	margin-left: 12px;
+	
+}
+#contentIndex h2{
+	width: 52%;
+	float: left;
+}
+#contentIndex ul{
+	list-style:circle outside;
+	padding-left: 12px;
+	margin-left: 24px;
+	display: inline-block;
+	width: 45%; 
+	vertical-align: top;
+	float: left;
+}
+#contentIndex ul li{
+	padding-left: 12px;
+	margin: 6px 0;
+	color: orange;
+	line-height: 1.5;
+}
+#contentIndex ul li a{
+	color: orange;
+}
+#contentIndex ul li a:hover{
+	text-decoration: none;
+}
+#contentIndex ul li span{
+	color: black;
+}
+#contentIndex form{
+	display: inline-block;
+	width: 45%;
+	vertical-align: top;
+	margin: 0 24px;
+}
+#contentIndex form fieldset{
+	border:1px solid orange;
+	border-radius: 10px;
+	padding: 12px;
+}
+#contentIndex form div{
+	padding:0 24px;
+}
+#contentIndex form input,select{
+	display: inline-block;
+	width: 60%;
+}
+#contentIndex form select:focus{
+	color: orange;
+}
+#contentIndex form select option:focus{
+	background-color: orange;
+	color: white;
+}
+#contentIndex form input[type='search']:focus{
+	color: orange;
+}
+#contentIndex form label{
+	display: inline-block;
+	margin-top: 12px;
+	width: 38%;
+	transition:0.3s all linear;
+}
+#contentIndex form input[type='submit']{
+	color: white;
+	display: block;
+	width: 30%;
+	margin: 12px auto;
+	background: linear-gradient(#FEE376,orange);
+	border-radius: 15px;
+	cursor: pointer;
+	padding: 6px;
+	border:2px solid orange;
+	font-size: 1.2em;
+	font-weight: 900;
+
+}
+#contentIndex form input[type='submit']:hover{
+	background: linear-gradient(white,orange);
+}
+#contentIndex form h2{
+	width: 100%;
+}
+#contentIndex form.search input[type='search']{
+	width: 0;
+	opacity: 0;
+	transition:0.2s all linear;
+}
+#contentIndex form.search input[type='search']:focus{
+	width: 60%;
+	opacity: 1;
+}
+#contentIndex form.search label:hover{
+	color: orange;
+	cursor: pointer;
+}
+#contentIndex .filters{
+	float: right;
+	width: 40%;
+	padding-top: 30px;
+}
+#contentIndex .filters div{
+	background-color: orange;
+	color: white;
+	display: inline-block;
+	width: auto;
+	padding: 12px 6px;
+	position: relative;
+	border-radius: 8px;
+	margin-bottom: 12px;
+	margin-right: 11px;
+}
+#contentIndex .filters div a{
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	text-decoration: none;
+	font-weight: 900;
+	font-size: 0.65em;
+	color: white;
+	cursor: pointer;
+}
+#contentIndex #titreForm{
+	width: 100%;
+}
+#contentIndex #titreForm h2{
+	width: 75%;
+}
+#contentIndex #titreForm select{
+	width: 20%;
+	margin-left: 3%;
+	margin-top: 5px;
+}

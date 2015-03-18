@@ -1,0 +1,10 @@
+volet publique = liste des livres, mets l'utilisateur peut les filtrer (filtres = éditeur, auteur, l'emplacement(la bibli ou il se trouve),le genre, la langue, année de publi)
+autres caractères : nombre de pages
+Chaque livre aura sa couverture.
+
+Réaliser un Crud(create retrieve update delete) de base vis à vis des livres
+A rendre : maquette html et css
+Sass pré processeur css
+Jade
+Grunt
+Prepros
