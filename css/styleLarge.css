@@ -125,25 +125,26 @@ ol.header li a.selected{
 .DGRAD{
 	background:linear-gradient(orange, white);
 }
-#contentIndex{
+.DGRAD>div{
 	border:5px solid orange;
 	border-radius: 25px;
 	padding: 24px 0;
 	width: 90%;
 	margin: 0 auto;
 	background-color: white;
+	margin-bottom: 24px;
 }
-#contentIndex h2,legend{
+.DGRAD>div h2,legend{
 	color: orange;
 	font-size: 1.5em;
 	margin-left: 12px;
 	
 }
-#contentIndex h2{
+.DGRAD>div h2{
 	width: 52%;
 	float: left;
 }
-#contentIndex ul{
+.DGRAD>div ul{
 	list-style:circle outside;
 	padding-left: 12px;
 	margin-left: 24px;
@@ -152,56 +153,56 @@ ol.header li a.selected{
 	vertical-align: top;
 	float: left;
 }
-#contentIndex ul li{
+.DGRAD>div ul li{
 	padding-left: 12px;
 	margin: 6px 0;
 	color: orange;
 	line-height: 1.5;
 }
-#contentIndex ul li a{
+.DGRAD>div ul li a{
 	color: orange;
 }
-#contentIndex ul li a:hover{
+.DGRAD>div ul li a:hover{
 	text-decoration: none;
 }
-#contentIndex ul li span{
+.DGRAD>div ul li span{
 	color: black;
 }
-#contentIndex form{
+.DGRAD>div form{
 	display: inline-block;
 	width: 45%;
 	vertical-align: top;
 	margin: 0 24px;
 }
-#contentIndex form fieldset{
+.DGRAD>div form fieldset{
 	border:1px solid orange;
 	border-radius: 10px;
 	padding: 12px;
 }
-#contentIndex form div{
+.DGRAD>div form div{
 	padding:0 24px;
 }
-#contentIndex form input,select{
+.DGRAD>div form input,select,textarea{
 	display: inline-block;
 	width: 60%;
 }
-#contentIndex form select:focus{
+.DGRAD>div form select:focus{
 	color: orange;
 }
-#contentIndex form select option:focus{
+.DGRAD>div form select option:focus{
 	background-color: orange;
 	color: white;
 }
-#contentIndex form input[type='search']:focus{
+.DGRAD>div form input[type='search']:focus{
 	color: orange;
 }
-#contentIndex form label{
+.DGRAD>div form label{
 	display: inline-block;
 	margin-top: 12px;
 	width: 38%;
 	transition:0.3s all linear;
 }
-#contentIndex form input[type='submit']{
+.DGRAD>div form input[type='submit']{
 	color: white;
 	display: block;
 	width: 30%;
@@ -215,31 +216,31 @@ ol.header li a.selected{
 	font-weight: 900;
 
 }
-#contentIndex form input[type='submit']:hover{
+.DGRAD>div form input[type='submit']:hover{
 	background: linear-gradient(white,orange);
 }
-#contentIndex form h2{
+.DGRAD>div form h2{
 	width: 100%;
 }
-#contentIndex form.search input[type='search']{
+.DGRAD>div form.search input[type='search']{
 	width: 0;
 	opacity: 0;
 	transition:0.2s all linear;
 }
-#contentIndex form.search input[type='search']:focus{
+.DGRAD>div form.search input[type='search']:focus{
 	width: 60%;
 	opacity: 1;
 }
-#contentIndex form.search label:hover{
+.DGRAD>div form.search label:hover{
 	color: orange;
 	cursor: pointer;
 }
-#contentIndex .filters{
+.DGRAD>div .filters{
 	float: right;
 	width: 40%;
 	padding-top: 30px;
 }
-#contentIndex .filters div{
+.DGRAD>div .filters div{
 	background-color: orange;
 	color: white;
 	display: inline-block;
@@ -250,7 +251,7 @@ ol.header li a.selected{
 	margin-bottom: 12px;
 	margin-right: 11px;
 }
-#contentIndex .filters div a{
+.DGRAD>div .filters div a{
 	position: absolute;
 	top: 3px;
 	right: 3px;
@@ -260,14 +261,21 @@ ol.header li a.selected{
 	color: white;
 	cursor: pointer;
 }
-#contentIndex #titreForm{
+.DGRAD>div #titreForm{
 	width: 100%;
 }
-#contentIndex #titreForm h2{
+.DGRAD>div #titreForm h2{
 	width: 75%;
 }
-#contentIndex #titreForm select{
+.DGRAD>div #titreForm select{
 	width: 20%;
 	margin-left: 3%;
 	margin-top: 5px;
+}
+.DGRAD>div label[for="body"]{
+	vertical-align: top;
+}
+.DGRAD>div textarea{
+	margin-top: 12px;
+	resize:none;
 }
