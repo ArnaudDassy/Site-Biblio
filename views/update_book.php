@@ -67,8 +67,7 @@
               <input type="hidden" name="e" value="book">
               <input type="hidden" name="id" value="<?php echo ($data['data'][0]['id']); ?>">
               <p>
-                <a href="index.php">[ ANNULER ]</a>
-                <input type="submit" value="Soumettre" />
+               <a href="index.php"class="button">Annuler</a><input type="submit" value="Soumettre" class="button" />
               </p>
             </div>
           </form>

@@ -143,6 +143,7 @@ ol.header li a.selected{
 .DGRAD>div h2{
 	width: 52%;
 	float: left;
+	margin-bottom: 12px;
 }
 .DGRAD>div ul{
 	list-style:circle outside;
@@ -182,7 +183,7 @@ ol.header li a.selected{
 .DGRAD>div form div{
 	padding:0 24px;
 }
-.DGRAD>div form input,select,textarea{
+.DGRAD>div form input[type='search'],input[type='number'],select,textarea{
 	display: inline-block;
 	width: 60%;
 }
@@ -202,23 +203,7 @@ ol.header li a.selected{
 	width: 38%;
 	transition:0.3s all linear;
 }
-.DGRAD>div form input[type='submit']{
-	color: white;
-	display: block;
-	width: 30%;
-	margin: 12px auto;
-	background: linear-gradient(#FEE376,orange);
-	border-radius: 15px;
-	cursor: pointer;
-	padding: 6px;
-	border:2px solid orange;
-	font-size: 1.2em;
-	font-weight: 900;
 
-}
-.DGRAD>div form input[type='submit']:hover{
-	background: linear-gradient(white,orange);
-}
 .DGRAD>div form h2{
 	width: 100%;
 }
@@ -278,4 +263,49 @@ ol.header li a.selected{
 .DGRAD>div textarea{
 	margin-top: 12px;
 	resize:none;
+}
+strong,h4,h3{
+	font-weight: bold;
+	color: orange;
+}
+h3{
+	text-align: center;
+	font-size: 1.8em;
+}
+.ficheLivre{
+	padding-left: 12px;
+	width: 50%;
+	display: inline-block;
+
+}
+.ficheLivre p, .ficheLivre h4{
+	line-height: 1.5;
+	font-size: 1.3em;
+}
+.image{
+	display: inline-block;
+	float: left;
+	width: 45%;
+}
+.button{
+	color: white;
+	display: inline-block;
+	width: 30%;
+	margin: 12px auto;
+	background: linear-gradient(#FEE376,orange);
+	border-radius: 15px;
+	cursor: pointer;
+	padding: 6px;
+	border:2px solid orange;
+	font-size: 1.2em;
+	font-weight: 900;
+	text-align: center;
+	text-decoration: none;
+	margin-right: 12px;
+}
+a.button{
+	padding: 9px;
+}
+.button:hover{
+	background: linear-gradient(white,orange);
 }

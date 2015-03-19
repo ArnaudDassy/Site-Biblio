@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	/*header('Location: http://www.google.com');*/
-	set_include_path('controllers;models;configs;views;'.get_include_path());
+	set_include_path('controllers;models;configs;views;img;'.get_include_path());
 	/*spl_autoload_register(function($className){
 		include($className.'.class.php');
 	});*/

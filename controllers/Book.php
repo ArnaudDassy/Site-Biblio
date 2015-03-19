@@ -120,34 +120,28 @@ class Book extends Base
 			/* TEST SI UN CHAMP EST VIDE */
 			if (empty($_POST['title'])) {
 				$errors['signature'] = true;
-				die('titre');
-			}
+							}
 			if (empty($_POST['body'])) {
 				$errors['body'] = true;
-				die('body');
-			}
+						}
 			if (empty($_POST['auteur'])) {
 				$errors['auteur'] = true;
-				die('auteur');
+				
 			}
 			if (empty($_POST['genre'])) {
 				$errors['genre'] = true;
-				die('genre');
-			}
+							}
 			if (empty($_POST['maison'])) {
 				$errors['maison'] = true;
-				die('maison');
+				
 			}
 			if (empty($_POST['note'])) {
 				$errors['note'] = true;
-				die('note');
-			}
+						}
 			if (empty($_POST['type'])) {
 				$errors['type'] = true;
-				die('type');
-			}
+						}
 			if(count($errors) === 0){
-				var_dump($_POST);
 				$this->postsModel->testExist($_POST['auteur'],'auteur');
 				$this->postsModel->testExist($_POST['genre'],'genre');
 				$this->postsModel->testExist($_POST['maison'],'maison');
@@ -165,7 +159,7 @@ class Book extends Base
 					$_POST['note'],
 					$_POST['id']
 				);
-				/*header('Location: http://localhost/Site Biblio/index.php?a=view&e=book&id='.$_POST['id']);*/
+				header('Location: http://localhost/Biblio/index.php?a=view&e=book&id='.$_POST['id']);
 			}
 			else{
 				die('erreur');

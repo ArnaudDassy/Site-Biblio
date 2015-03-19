@@ -81,11 +81,19 @@ class Book extends Model implements BookRepositoryInterface
 		return $pdost->fetchAll();
 	}
 	public function updateLivre($auteur,$genre,$maison,$type,$biblio,$body,$title,$note,$id){
-		var_dump($auteur);
 		$sql = "UPDATE biblio.livre SET auteur_id = :auteur, genre_id = :genre,maison_id = :maison,type_id = :type, biblio_id = :biblio,body = :body, titre= :title,note = :note WHERE livre.id= :id";
 		try{
 			$res = $this->connexion->prepare($sql);
-			$res->execute([':auteur' => $auteur, ':genre' => $genre, ':maison' => $maison,':type' => $type,':biblio' => $biblio, ':body' => $body, ':title' => $title,':note' => $note,':id' => $id]);
+			$res->execute([
+				':auteur' => $auteur['id'],
+				':genre' => $genre['id'],
+				':maison' => $maison['id'],
+				':type' => $type['id'],
+				':biblio' => $biblio['id'],
+				':body' => $body,
+				':title' => $title,
+				':note' => $note,
+				':id' => $id]);
 		}catch(PDOException $e){
 			die($e->getMessage());
 		}
