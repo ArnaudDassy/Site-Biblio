@@ -1,7 +1,7 @@
 <section>
   <div id="siteContent">
     <ol class="header">
-      <li><a href="index.html">Acceuil</a></li><li><a href="book.html" title="Naviguer vers le catalogue des livres" class="selected">Choisir son livre</a></li><li><a href="library.html" title="En apprendre plus sur la bibliothèque">Choisir sa bibliothèque</a></li><li><a href="connect.html">Se connecter</a></li>
+      <li><a href="index.php">Acceuil</a></li><li><a href="book.html" title="Naviguer vers le catalogue des livres" class="selected">Choisir son livre</a></li><li><a href="library.html" title="En apprendre plus sur la bibliothèque">Choisir sa bibliothèque</a></li><li><a href="connect.html">Se connecter</a></li>
 
     </ol>
     <div id="header">
@@ -37,7 +37,7 @@
               </p>
               <input type="hidden" name="action" value="search" />
               <p>
-                <input type="submit" value="Rechercher" />
+                <input type="submit" value="Rechercher" class="button" />
               </p>
             </div>
           </form>
@@ -104,7 +104,7 @@
               <input type="hidden" name="a" value="add">
               <input type="hidden" name="e" value="book">
               <p>
-                <input type="submit" value="Ajouter" />
+                <input type="submit" value="Ajouter" class="button"/>
               </p>
             </div>
           </form>

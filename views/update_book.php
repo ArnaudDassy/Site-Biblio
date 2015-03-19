@@ -22,7 +22,7 @@
             <div>
               <p>
                 <label for="title">Titre</label>
-                <input type="text" name="title" id="title" value=<?php echo ($data['data'][0]['titre']); ?> />
+                <input type="text" name="title" id="title" value="<?php echo ($data['data']['0']['titre']); ?>" />
               </p>
               <p>
                 <label for="auteur">Auteur</label>

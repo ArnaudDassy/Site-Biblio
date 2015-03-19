@@ -98,4 +98,13 @@ class Book extends Model implements BookRepositoryInterface
 			die($e->getMessage());
 		}
 	}
+	public function deleteBook($id){
+		$sql="DELETE FROM biblio.livre WHERE livre.id= :id";
+		try{
+		$res = $this->connexion->prepare($sql);
+		$res->execute([':id' => $id]);
+		}catch(PDOException $e){
+			die($e->getMessage());
+		}
+	}
 }
