@@ -1,10 +1,11 @@
 <?php
 namespace Controllers;
-class Books extends Base
+class Book extends Base
 {
 	private $postsModel = null;
-	public function __construct(){
-		$this->postsModel = new \Models\Posts();
+	public function __construct(\Models\Book $bookModel)
+	{
+		$this->postsModel = $bookModel;
 	}
 	public function index(){
 		
@@ -26,9 +27,66 @@ class Books extends Base
 		}
 		return $data;
 	}
+	public function add(){
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$errors= [];
+			/* TEST SI UN CHAMP EST VIDE */
+			if (empty($_POST['title'])) {
+				$errors['signature'] = true;
+			}
+			if (empty($_POST['body'])) {
+				$errors['body'] = true;
+			}
+			if (empty($_POST['auteur'])) {
+				$errors['auteur'] = true;
+			}
+			if (empty($_POST['genre'])) {
+				$errors['genre'] = true;
+			}
+			if (empty($_POST['maison'])) {
+				$errors['maison'] = true;
+			}
+			if (empty($_POST['note'])) {
+				$errors['note'] = true;
+			}
+			if (empty($_POST['type'])) {
+				$errors['type'] = true;
+			}
+			if(count($errors) === 0){
+				$this->postsModel->testExist($_POST['auteur'],'auteur');
+				$this->postsModel->testExist($_POST['genre'],'genre');
+				$this->postsModel->testExist($_POST['maison'],'maison');
+				$this->postsModel->testExist($_POST['type'],'type');
+				$this->postsModel->testExist($_POST['biblio'],'biblio');
+				$this->postsModel->
+				createLivre(
+					$this->postsModel->convert($_POST['auteur'],'auteur'),
+					$this->postsModel->convert($_POST['genre'],'genre'),
+					$this->postsModel->convert($_POST['maison'],'maison'),
+					$this->postsModel->convert($_POST['type'],'type'),
+					$this->postsModel->convert($_POST['biblio'],'biblio'),
+					$_POST['body'],
+					$_POST['title'],
+					$_POST['note']
+				);
+				$data['view'] ='view_books.php';
+				$dernierLivre=$this->postsModel->lastBookID();
+				header('Location: http://localhost/Site Biblio/index.php?a=view&e=book&id='.$dernierLivre['max(id)']);
+			}
+			else{
+				die('un CHAMP est vide');
+			}
+		}
+	}
 	public function view(){
 			$data=[];
-			$data['view'] ='view_books.php';
+			$data['view']='view_book.php';
+			$data['data']=$this->postsModel->getBook($_REQUEST['id']);
+			$data['data']['auteur']=$this->postsModel->getAuteur($data['data'][0]['auteur_id']);
+			$data['data']['maison']=$this->postsModel->getMaison($data['data'][0]['maison_id']);
+			$data['data']['type']=$this->postsModel->getType($data['data'][0]['type_id']);
+			$data['data']['genre']=$this->postsModel->getGenre($data['data'][0]['genre_id']);
+			$data['data']['biblio']=$this->postsModel->getBiblio($data['data'][0]['biblio_id']);
 			if(isset($_SESSION['connected']) || isset($_COOKIE['connected'])){
 			$data['connected'] = 'formConnected.php';
 			}
@@ -40,11 +98,15 @@ class Books extends Base
 	public function update(){
 
 		if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-			$id=$_GET['id'];
 			$data=[];
-			$data['data'] = $this->postsModel->getPost($id);
-			$data['categories'] = $this->postsModel->getCategories();
-			$data['view'] ='update_posts.php';
+			$data['view']='update_book.php';
+			$data['data']=$this->postsModel->getBook($_GET['id']);
+			$data['data']['auteur']=$this->postsModel->getAuteur($data['data'][0]['auteur_id']);
+			$data['data']['maison']=$this->postsModel->getMaison($data['data'][0]['maison_id']);
+			$data['data']['type']=$this->postsModel->getType($data['data'][0]['type_id']);
+			$data['data']['genre']=$this->postsModel->getGenre($data['data'][0]['genre_id']);
+			$data['data']['biblio']=$this->postsModel->getBiblio($data['data'][0]['biblio_id']);
+			$data['biblio']=$this->postsModel->getAllBiblio();
 			if(isset($_SESSION['connected']) || isset($_COOKIE['connected'])){
 			$data['connected'] = 'formConnected.php';
 			}
@@ -55,21 +117,60 @@ class Books extends Base
 		}
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$errors= [];
-			if (empty($_POST['signature'])) {
+			/* TEST SI UN CHAMP EST VIDE */
+			if (empty($_POST['title'])) {
 				$errors['signature'] = true;
+				die('titre');
 			}
 			if (empty($_POST['body'])) {
 				$errors['body'] = true;
+				die('body');
 			}
-			if($_POST['newCategory'] != ''){
-				$this->postsModel->createCategory($_POST['newCategory']);
-				$this->postsModel->modifyMessage($_POST['signature'],$_POST['body'],$_POST['id'], $_POST['newCategory']);
-				header('Location: http://localhost/Cours4/index.php');
+			if (empty($_POST['auteur'])) {
+				$errors['auteur'] = true;
+				die('auteur');
 			}
-			elseif(count($errors) === 0){	
-				$this->postsModel->modifyMessage($_POST['signature'],$_POST['body'],$_POST['id'], $_POST['category']);
-				header('Location: http://localhost/Cours4/index.php');
+			if (empty($_POST['genre'])) {
+				$errors['genre'] = true;
+				die('genre');
 			}
+			if (empty($_POST['maison'])) {
+				$errors['maison'] = true;
+				die('maison');
+			}
+			if (empty($_POST['note'])) {
+				$errors['note'] = true;
+				die('note');
+			}
+			if (empty($_POST['type'])) {
+				$errors['type'] = true;
+				die('type');
+			}
+			if(count($errors) === 0){
+				var_dump($_POST);
+				$this->postsModel->testExist($_POST['auteur'],'auteur');
+				$this->postsModel->testExist($_POST['genre'],'genre');
+				$this->postsModel->testExist($_POST['maison'],'maison');
+				$this->postsModel->testExist($_POST['type'],'type');
+				$this->postsModel->testExist($_POST['biblio'],'biblio');
+				$this->postsModel->
+				updateLivre(
+					$this->postsModel->convert($_POST['auteur'],'auteur'),
+					$this->postsModel->convert($_POST['genre'],'genre'),
+					$this->postsModel->convert($_POST['maison'],'maison'),
+					$this->postsModel->convert($_POST['type'],'type'),
+					$this->postsModel->convert($_POST['biblio'],'biblio'),
+					$_POST['body'],
+					$_POST['title'],
+					$_POST['note'],
+					$_POST['id']
+				);
+				/*header('Location: http://localhost/Site Biblio/index.php?a=view&e=book&id='.$_POST['id']);*/
+			}
+			else{
+				die('erreur');
+			}
+
 		}
 
 	}

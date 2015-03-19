@@ -6,9 +6,6 @@
 		include($className.'.class.php');
 	});*/
 	require 'vendor/autoload.php';
-	
-
-
 	include('configs/routes.php');
 
 	$routeParts=explode('/',$routes['default']);
@@ -26,6 +23,12 @@
 
 	/*include('controllers/'.$e.'.php');*/
 	$controllerName = '\Controllers\\'.ucfirst($e);
-	$controller = new $controllerName();
+	/*$controller = new $controllerName();*/
+	$container = new Illuminate\Container\Container();
+	foreach (include('injection.php') as $interface => $concrete) {
+	$container->bind($interface, $concrete);
+	}
+	$controllerName = '\Controllers\\' . ucfirst($e);
+	$controller = $container->make($controllerName);
 	$data = call_user_func([$controller,$a]);	
 	include('views/layout.php');
