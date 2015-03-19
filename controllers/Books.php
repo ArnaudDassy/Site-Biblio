@@ -3,11 +3,9 @@ namespace Controllers;
 class Books extends Base
 {
 	private $postsModel = null;
-	public function __construct(\Models\Books $booksModel)
-	{
-		$this->postsModel = $booksModel;
+	public function __construct(){
+		$this->postsModel = new \Models\Posts();
 	}
-
 	public function index(){
 		
 		$data=[];
@@ -31,7 +29,6 @@ class Books extends Base
 	public function view(){
 			$data=[];
 			$data['view'] ='view_books.php';
-			$data['biblio']=$this->postsModel->getAllBiblio();
 			if(isset($_SESSION['connected']) || isset($_COOKIE['connected'])){
 			$data['connected'] = 'formConnected.php';
 			}

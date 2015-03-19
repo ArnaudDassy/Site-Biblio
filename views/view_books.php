@@ -16,7 +16,7 @@
       <div class="DGRAD">
         <div id="contentIndex">
           <div class="imgSearch"></div>
-          <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" class="search">
+          <form action="#" class="search">
             <h2>Rechercher un livre</h2>
             <div>
               <p>
@@ -61,7 +61,7 @@
               </div>
         </div>
         <div class="addBook">
-          <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" class="search">
+          <form action="#" class="search">
             <h2>Ajouter un livre</h2>
             <div>
               <p>
@@ -89,20 +89,10 @@
                 <input type="text" name="type" id="type" placeholder="Romantique" />
               </p>
               <p>
-                <label for="selectBiblio">Bibliothèque</label>
-                <select name="biblio" id="selectBiblio">
-                  <?php foreach ($data['biblio'] as $bilbio) : ?>
-                  <option value="<?php echo $bilbio['nom']; ?>" > <?php echo($bilbio['nom']);  ?> </option>
-                  <?php endforeach; ?>
-                </select>
-              </p>
-              <p>
                 <label for="body">Quatrième de couverture</label>
                 <textarea name="body" id="body" cols="30" rows="10"></textarea>
               </p>
               <input type="hidden" name="action" value="addBook" />
-              <input type="hidden" name="a" value="add">
-              <input type="hidden" name="e" value="book">
               <p>
                 <input type="submit" value="Ajouter" />
               </p>
