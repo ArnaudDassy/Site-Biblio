@@ -1,7 +1,7 @@
 <section>
   <div id="siteContent">
     <ol class="header">
-      <li><a href="index.php" class="selected">Acceuil</a></li><li><a href="index.php?a=view&e=books" title="Naviguer vers le catalogue des livres">Choisir son livre</a></li><li><a href="contact.html" title="En apprendre plus sur la bibliothèque">Choisir sa bibliothèque</a></li><li><a href="connect.html">Se connecter</a></li>
+      <li><a href="index.php" class="selected">Acceuil</a></li><li><a href="index.php?a=view&e=books" title="Naviguer vers le catalogue des livres">Choisir son livre</a></li><li><a href="contact.html" title="En apprendre plus sur la bibliothèque">Choisir sa bibliothèque</a></li><li><a href="index.php?a=view&e=user">Se connecter</a></li>
 
     </ol>
     <div id="header">
