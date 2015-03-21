@@ -78,6 +78,7 @@ ol.header li a.selected{
 #header{
 	width: 100%;
 	position: absolute;
+	z-index: 0;
 }
 #header div{
 	width: 115px;
@@ -319,4 +320,13 @@ a.button{
 
 .DGRAD .ficheLivre form{
 	display: inline;
+}
+.connexion .form-inline{
+	border-bottom: 2px solid orange;
+	box-shadow: -1px -3px 5px 5px rgba(0,0,0,0.5);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: white;
+	z-index: 1;
 }

@@ -80,7 +80,7 @@ class User extends Base
 		if (isset($_COOKIE['connected'])) {
 			setcookie("connected",'',-1);
 		}
-		setcookie("name",'',-1);
+		setcookie("user",'',-1);
 		session_destroy();
 		header('Location: index.php');
 
@@ -90,7 +90,7 @@ class User extends Base
 		$_SESSION['connected']=1;
 		/*$admin==true?$_SESSION['admin']=1:$_SESSION['admin']=0;*/
 		if ($stay == 'on') {
-			setcookie("connected", 'blog', time()+36000);
+			setcookie("connected", 'biblio Liège', time()+36000);
 			setcookie("name", $email, time()+36000);
 		}
 		/*header('Location: '.$_SERVER['QUERY_STRING']);*/

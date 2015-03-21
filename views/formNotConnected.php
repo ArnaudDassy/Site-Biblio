@@ -2,7 +2,7 @@
 	<?php include('erreur.php'); ?>
 <?php endif; ?>
 <section>
-	<div  class='form-inline'>
+	<!-- <div  class='form-inline'>
 		<form action="" method="post" style="width:45%;float:left;">
 			<div id="loginIn" class="message__heading panel panel-primary" style="padding:12px;">
 				<p>Se connecter :</p>
@@ -48,5 +48,6 @@
 			</div>
 		</form>
 	</div>
-	<hr style="clear:both;">
+	<hr style="clear:both;"> -->
+	<span></span>
 </section>

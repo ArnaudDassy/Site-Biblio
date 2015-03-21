@@ -1,5 +1,13 @@
 <?php
 	session_start();
+	if (isset($_SESSION['connected']) && $_SESSION['connected']==1 || isset($_COOKIE['connected'])) {
+		$_SESSION['user']=$_COOKIE['name'];
+		$_SESSION['connected']=1;
+
+	}
+	else{
+		$_SESSION['connected']='';
+	}
 	/*header('Location: http://www.google.com');*/
 	set_include_path('controllers;models;configs;views;img;'.get_include_path());
 	/*spl_autoload_register(function($className){

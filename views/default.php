@@ -1,6 +1,9 @@
 <section>
   <div id="siteContent">
-    <ol class="header">
+    <div class="connexion">
+      <?php $_SESSION['connected']==1?include('formConnected.php'):include('formNotConnected.php'); ?>
+    </div>
+    <ol class="header" <?php $_SESSION['connected']==1?print("style=margin-top:35px;"):print("style=margin-top:0px;"); ?>>
       <li><a href="index.php" class="selected">Acceuil</a></li><li><a href="index.php?a=view&e=books" title="Naviguer vers le catalogue des livres">Choisir son livre</a></li><li><a href="contact.html" title="En apprendre plus sur la bibliothèque">Choisir sa bibliothèque</a></li><li><a href="index.php?a=view&e=user">Se connecter</a></li>
 
     </ol>
