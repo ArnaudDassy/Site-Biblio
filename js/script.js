@@ -14,12 +14,10 @@ function start () {
 	inputsSearch[2].addEventListener('keyup',function(){recherche(2)},false);
 	inputsSearch[3].addEventListener('keyup',function(){recherche(3)},false);
 
-	aOff[0].addEventListener('click',function(){offThis(0)},false);
-	aOff[1].addEventListener('click',function(){offThis(1)},false);
-	aOff[2].addEventListener('click',function(){offThis(2)},false);
-	aOff[3].addEventListener('click',function(){offThis(3)},false);
-
-	
+	aOff[0].addEventListener('click',function(){deleteThis(0)},false);
+	aOff[1].addEventListener('click',function(){deleteThis(1)},false);
+	aOff[2].addEventListener('click',function(){deleteThis(2)},false);
+	aOff[3].addEventListener('click',function(){deleteThis(3)},false);
 }
 function recherche(indice){
 	if(inputsSearch[indice].value!=''){
@@ -31,7 +29,7 @@ function recherche(indice){
 		spanFiltre[indice].innerHTML='';
 	}
 }
-function offThis(indice){
+function deleteThis(indice){
 	divFiltres[indice].style.display='none';
 	inputsSearch[indice].value='';
 	spanFiltre[indice].innerHTML='';

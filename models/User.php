@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Models;
 class User extends Model implements UserRepositoryInterface{
 	public function getUser($email,$password){
@@ -22,13 +22,12 @@ class User extends Model implements UserRepositoryInterface{
 		$sql='SELECT * FROM users WHERE user_name=:email AND password=:password';
 		$pdost = $this->connexion->prepare($sql);
 		$pdost->execute([':email' => $login, 'password' => $mdp]);
-		$test=$pdost->fetch();
+		$test=$pdost->fetchAll();
 		if(empty($test)){
 			return false;
 		}
 		else{
 			return $test;
-			return true;
 		}
 	}
 	public function verifyIfUserExist($login){
