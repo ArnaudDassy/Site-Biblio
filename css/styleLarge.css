@@ -208,11 +208,6 @@ ol.header li a.selected{
 .DGRAD>div form h2{
 	width: 100%;
 }
-.DGRAD>div form.search input[type='search']{
-	width: 0;
-	opacity: 0;
-	transition:0.2s all linear;
-}
 .DGRAD>div form.search input[type='search']:focus{
 	width: 60%;
 	opacity: 1;

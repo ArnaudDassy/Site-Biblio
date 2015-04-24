@@ -21,6 +21,8 @@
       </p>
       <input type="hidden" name="action" value="search" />
       <p>
+        <input type="hidden" name="a" value="view">
+        <input type="hidden" name="e" value="search">
         <input type="submit" value="Rechercher" class="button" />
       </p>
     </div>

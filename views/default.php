@@ -9,7 +9,7 @@
   <a href="index.php?a=view&e=genre&id=<?php echo $data['data'][$i]['genre_id']; ?>"><?php echo $data['data']['genre'][$i]['nom']; ?></a></li>
 <?php endfor; ?>
 </ul>
-<form action="index.php" methode="post">
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
   <input type="hidden" name="a" value="view">
   <input type="hidden" name="e" value="search">
   <fieldset>
@@ -17,7 +17,7 @@
     <div>
       <p>
         <label for="search" style="width:auto;margin-bottom:12px;">Mot(s) clé(s) : </label>
-        <input type="search" name="search" id="searchTab" placeholder="Auteur, Titre, Genre, ..." style="width:100%;"/>
+        <input type="search" name="searchAll" id="searchTab" placeholder="Auteur, Titre, Genre, ..." style="width:100%;"/>
 
       </p>
       <p>
