@@ -107,4 +107,7 @@ class Book extends Model implements BookRepositoryInterface
 			die($e->getMessage());
 		}
 	}
+	public function getBooksByCriterion($genre,$id){
+		return 'hello';
+	}
 }
