@@ -7,7 +7,7 @@
     </p>
     <p>
     <?php foreach($data['livres'] as $livre) : ?>
-    <p>
+    <p style="margin:3px 0;">
       <a href="index.php?a=view&e=book&id=<?php echo $livre['id']; ?>"><?php echo $livre['titre'];?></a>
     </p>
     <?php endforeach; ?>
