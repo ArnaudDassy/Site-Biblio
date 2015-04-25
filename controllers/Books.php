@@ -130,4 +130,15 @@ class Books extends Base
 			header('Location: http://localhost/Cours3/index.php');
 		}
 	}
+	public function filter(){
+		if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+			$data=[];
+			$genre=$_GET['kind'];
+			$id=$_GET['id'];
+			$data['livres'] = $this->postsModel->getBooksByCriterion($genre,$id);
+			$data['filter'] = $this->postsModel->getNameOfCriterion($genre,$id);
+			$data['view'] ='filter_books.php';
+			return $data;
+		}
+	}
 }
