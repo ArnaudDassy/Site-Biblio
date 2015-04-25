@@ -8,5 +8,4 @@ interface BookRepositoryInterface
 	public function getType($id);
 	public function getGenre($id);
 	public function getBiblio($id);
-
 }

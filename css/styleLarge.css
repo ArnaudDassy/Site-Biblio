@@ -129,7 +129,7 @@ ol.header li a.selected{
 .DGRAD>div{
 	border:5px solid orange;
 	border-radius: 25px;
-	padding: 24px;
+	padding: 24px 0;
 	width: 90%;
 	margin: 0 auto;
 	background-color: white;
