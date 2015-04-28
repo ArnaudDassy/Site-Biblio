@@ -70,6 +70,17 @@ class User extends Base
 			$this->connect($login,$mdp,$stay);
 		}
 	}
+	public function settings(){
+		isset($_SESSION['user'])?$user=$_SESSION['user']:$user=null;
+		$data['view']='settings_user.php';
+		if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+			$updatedData=$_POST;
+			$this->postsModel->updateUser($user,$updatedData);
+		}
+		$data['user']=$this->postsModel->getUserByName($user);
+		return $data;
+		header('Location : http://localhost/Biblio/index.php?a=settings&e=user');
+	}
 	public function disconnect(){
 		if (isset($_COOKIE['connected'])) {
 			setcookie("connected",'',-1);
