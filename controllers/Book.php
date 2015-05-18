@@ -28,6 +28,7 @@ class Book extends Base
 		return $data;
 	}
 	public function add(){
+
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$errors= [];
 			/* TEST SI UN CHAMP EST VIDE */
@@ -58,6 +59,8 @@ class Book extends Base
 				$this->postsModel->testExist($_POST['maison'],'maison');
 				$this->postsModel->testExist($_POST['type'],'type');
 				$this->postsModel->testExist($_POST['biblio'],'biblio');
+				$allBooks = $this->postsModel->getBooks();
+				$newID = $allBooks[0]['id']+1;
 				$this->postsModel->
 				createLivre(
 					$this->postsModel->convert($_POST['auteur'],'auteur'),
@@ -67,11 +70,15 @@ class Book extends Base
 					$this->postsModel->convert($_POST['biblio'],'biblio'),
 					$_POST['body'],
 					$_POST['title'],
-					$_POST['note']
+					$_POST['note'],
+					$newID
 				);
 				$data['view'] ='view_books.php';
 				$dernierLivre=$this->postsModel->lastBookID();
-				header('Location: http://localhost/Biblio/index.php?a=view&e=book&id='.$dernierLivre['max(id)']);
+				$this->postsModel->updatePath($dernierLivre['max(id)']);
+				$data["id"]=$dernierLivre['max(id)'];
+				rename("./files/image_0.png","./files/image_".$data["id"].".png");
+				header('Location: http://localhost/CSS Biblio/index.php?a=view&e=book&id='.$dernierLivre['max(id)']);
 			}
 			else{
 				die('un CHAMP est vide');
@@ -87,6 +94,7 @@ class Book extends Base
 			$data['data']['type']=$this->postsModel->getType($data['data'][0]['type_id']);
 			$data['data']['genre']=$this->postsModel->getGenre($data['data'][0]['genre_id']);
 			$data['data']['biblio']=$this->postsModel->getBiblio($data['data'][0]['biblio_id']);
+
 			if(isset($_SESSION['connected']) || isset($_COOKIE['connected'])){
 			$data['connected'] = 'formConnected.php';
 			}
@@ -159,7 +167,7 @@ class Book extends Base
 					$_POST['note'],
 					$_POST['id']
 				);
-				header('Location: http://localhost/Biblio/index.php?a=view&e=book&id='.$_POST['id']);
+				header('Location: http://localhost/CSS Biblio/index.php?a=view&e=book&id='.$_POST['id']);
 			}
 			else{
 				die('erreur');
@@ -192,7 +200,7 @@ class Book extends Base
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$id=$_POST['id'];
 			$this->postsModel->deleteBook($id);
-			header('Location: http://localhost/Biblio/index.php');
+			header('Location: http://localhost/CSS Biblio/index.php');
 		}
 	}
 }

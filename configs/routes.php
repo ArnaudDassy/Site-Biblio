@@ -18,3 +18,5 @@ $routes['disconnect_user']='disconnect/user';
 $routes['create_user']='create/user';
 $routes['settings_user']='settings/user';
 
+$routes['view_biblio']='view/biblio';
+

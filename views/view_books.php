@@ -1,51 +1,21 @@
-<section>
-  <div class="imgSearch"></div>
-  <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" class="search">
-    <h2>Rechercher un livre</h2>
-    <div>
-      <p>
-        <label for="auteur">Par auteur</label>
-        <input type="search" name="auteur" id="auteur" placeholder="ex : Oda" />
-      </p>
-      <p>
-        <label for="type">Par genre</label>
-        <input type="search" name="genre" id="type" placeholder="ex : Manga" />
-      </p>
-      <p>
-        <label for="title">Par titre</label>
-        <input type="search" name="title" id="title" placeholder="ex : La vallée d'en bas" />
-      </p>
-      <p>
-        <label for="maison">Par maison d'édition</label>
-        <input type="search" name="maison" id="maison" placeholder="ex : Ford Boyard" />
-      </p>
-      <input type="hidden" name="action" value="search" />
-      <p>
-        <input type="hidden" name="a" value="view">
-        <input type="hidden" name="e" value="search">
-        <input type="submit" value="Rechercher" class="button" />
-      </p>
-    </div>
-  </form>
-  <div class="filters">
-    <div class="divFiltre">
-      <a class="off">X</a>
-      <p>Auteur : <span class="filtre"></span></p>
-    </div>
-    <div class="divFiltre">
-      <a class="off">X</a>
-      <p>Genre : <span class="filtre"></span></p>
-    </div>
-    <div class="divFiltre">
-      <a class="off">X</a>
-      <p>Titre : <span class="filtre"></span></p>
-    </div>
-    <div class="divFiltre">
-      <a class="off">X</a>
-      <p>Maison : <span class="filtre"></span></p>
-    </div>
+	<section>
+	<h2>Tout nos livres</h2>
+	<ul class="last_books">
+      <?php for ($i=0; $i<count($data['data']['books']) ; $i++) : ?>
+      <li>
+      <a class="grey" href="index.php?a=view&e=book&id=<?php echo $data['data']['books'][$i]['id'] ; ?>"><?php echo $data['data']['books'][$i]['titre'];?></a>
+      <span> de </span>
+      <a class="grey" href="index.php?a=filter&e=books&kind=auteur&id=<?php echo $data['data']['books'][$i]['auteur_id'] ; ?>"><?php echo $data['data']['auteur'][$i]['nom'] ;?></a>
+      .<span>  Catégorie :</span>
+      <a class="grey" href="index.php?a=filter&e=books&kind=genre&id=<?php echo $data['data']['books'][$i]['genre_id']; ?>"><?php echo $data['data']['genre'][$i]['nom']; ?></a></li>
+    <?php endfor; ?>
+    </ul> 
+	</section>
+</div>
+<?php if($_SESSION['admin']==1) : ?>
+  <div class="content">
+<?php include('addBook.php'); ?>
   </div>
-  <?php if($_SESSION['admin']==1) : ?>
-  <?php include('addBook.php'); ?>
-  <?php endif; ?>
-</section>
+<?php endif; ?>
+
+

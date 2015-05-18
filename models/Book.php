@@ -14,6 +14,11 @@ class Book extends Model implements BookRepositoryInterface
 		$res->execute([':id' => $id]);
 		return $res->fetchAll();
 	}
+	public function getBooks(){
+		$sql ='SELECT * FROM livre ORDER BY id DESC';
+		$res= $this->connexion->query($sql);
+		return $res->fetchAll();
+	}
 	public function getAuteur($id){
 		$sql ="SELECT * FROM auteur INNER JOIN livre ON livre.auteur_id=auteur.id WHERE auteur_id=:id";;
 		$pdost = $this->connexion->prepare($sql);
@@ -66,7 +71,7 @@ class Book extends Model implements BookRepositoryInterface
 		return $pdost->fetch();
 	}
 	public function createLivre($auteur,$genre,$maison,$type,$biblio,$body,$title,$note){
-		$sql = 'INSERT INTO livre (auteur_id,genre_id,maison_id,type_id,biblio_id,body,nom,note) VALUES (:auteur,:genre,:maison,:type,:biblio,:body,:title,:note)';
+		$sql = 'INSERT INTO livre (auteur_id,genre_id,maison_id,type_id,biblio_id,body,titre,note) VALUES (:auteur,:genre,:maison,:type,:biblio,:body,:title,:note)';
 		$pdost = $this->connexion->prepare($sql);
 		$pdost->execute([':auteur' => $auteur['id'], ':genre' => $genre['id'],':maison' => $maison['id'], ':type' => $type['id'],':biblio' => $biblio['id'], ':body' => $body,':title' => $title, ':note' => $note]);
 	}
@@ -81,7 +86,7 @@ class Book extends Model implements BookRepositoryInterface
 		return $pdost->fetchAll();
 	}
 	public function updateLivre($auteur,$genre,$maison,$type,$biblio,$body,$title,$note,$id){
-		$sql = "UPDATE biblio.livre SET auteur_id = :auteur, genre_id = :genre,maison_id = :maison,type_id = :type, biblio_id = :biblio,body = :body, nom= :title,note = :note WHERE livre.id= :id";
+		$sql = "UPDATE biblio.livre SET auteur_id = :auteur, genre_id = :genre,maison_id = :maison,type_id = :type, biblio_id = :biblio,body = :body, titre= :title,note = :note WHERE livre.id= :id";
 		try{
 			$res = $this->connexion->prepare($sql);
 			$res->execute([
@@ -97,6 +102,11 @@ class Book extends Model implements BookRepositoryInterface
 		}catch(PDOException $e){
 			die($e->getMessage());
 		}
+	}
+	public function updatePath($id){
+		$sql = "UPDATE biblio.livre SET img_path = :img WHERE livre.id= :id";
+		$res = $this->connexion->prepare($sql);
+		$res->execute([':id' => $id, ':img' => './files/image_'.$id.'.png']);
 	}
 	public function deleteBook($id){
 		$sql="DELETE FROM biblio.livre WHERE livre.id= :id";

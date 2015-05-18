@@ -13,10 +13,10 @@
    			<div style="padding-left:10px;" >
    				<?php foreach($result['result'] as $results) : ?>
    					<?php if(!isset($results['nom'])) : ?>
-   						<p style="margin:3px 0;"><a href="index.php?a=view&e=book&id=<?php echo $results['id']; ?>"><?php echo $results['titre']; ?></a></p>
+   						<p style="margin:3px 0;"><a class="grey" href="index.php?a=view&e=book&id=<?php echo $results['id']; ?>"><?php echo $results['titre']; ?></a></p>
    					<?php endif; ?>
    					<?php if(isset($results['nom'])) : ?>
-   						<p style="margin:3px 0;"><a href="index.php?a=filter&e=books&kind=<?php echo$result['categorySearch']; ?>&id=<?php echo $results['id'] ; ?>"><?php echo $results['nom']; ?></a></p>
+   						<p style="margin:3px 0;"><a class="grey" href="index.php?a=filter&e=books&kind=<?php echo$result['categorySearch']; ?>&id=<?php echo $results['id'] ; ?>"><?php echo $results['nom']; ?></a></p>
    					<?php endif; ?>
    				<?php endforeach; ?>
    			</div>
