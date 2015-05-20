@@ -3,7 +3,6 @@ namespace Models;
 class Model{
 	protected $connexion = null;
 
-
 	public function __construct(){
 		include('db.php');
 		try{

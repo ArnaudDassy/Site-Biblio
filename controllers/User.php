@@ -7,11 +7,6 @@ class User extends Base
 	{
 		$this->postsModel = $userModel;
 	}
-	public function collect(){
-		$data=[];
-		$data['view']='default.php';
-		return $data;
-	}
 	public function view(){
 		$data=[];
 		$data['view']='view_user.php';
@@ -21,45 +16,53 @@ class User extends Base
 		if (empty($_REQUEST['user']) ||empty($_REQUEST['mdp'])) {
 			die('il manque des donnees de connexion');
 		}
-
 		else{
+			//Je récupère les informations de l'utilisateur
 			$login=$_REQUEST['user'];
 			$mdp=$_REQUEST['mdp'];
 			isset($_REQUEST['stay'])?$stay=$_REQUEST['stay']:$stay='';
+
+			//Je test si il existe
 			$user= $this->postsModel->verifyUser($login,$mdp);
 			if($user == false){
 				$data['erreur']='erreur.php';
 				$data['erreurMessage']='Désolé, mais il semblerait que vos identifiants soient incorrectes';
-				$data['connected'] ='formNotConnected.php';
 				$data['view']='view_user.php';
-
 			}
 			else{
 				$user=$this->postsModel->getUser($login,$mdp);
+
+				//Je test si il a des droits d'admin
 				$user['admin']!=null?$user['admin']=1:$user['admin']=0;
-				/*$test['admin']!=null?$data['admin']='admin.php':$data['admin']='common.php';*/
 				$this->connect($user['user_name'],$stay,$user['admin']);
-				$data['view']='default.php';
-				return $data;
+				$data['view']='default.php';	
 			}
+			return $data;
 		}
 	}
 	public function create(){
+		//Je récupère les informations de l'utilisateur
 		$login=$_REQUEST['user'];
 		$mdp=$_REQUEST['mdp'];
 		$mdpConfirm=$_REQUEST['mdpConfirm'];
 		$data['view']='default.php';
 		isset($_REQUEST['stay'])?$stay=$_REQUEST['stay']:$stay='';
+
+		//Je test que les mdp soient égaux
 		if ($mdp != $mdpConfirm) {
 			$data['erreur']='erreur.php';
 			$data['erreurMessage']='Désolé mais les mots de passes semblent ne pas correspondre';
 			return $data;
 		}
+
+		//Je test si un champ est vide
 		if(empty($_REQUEST['user']) || empty($_REQUEST['mdp']) ||empty($_REQUEST['mdpConfirm'])){
 			$data['erreur']='erreur.php';
 			$data['erreurMessage']='Désolé mais tout les champs doivent être complétés';
 			return $data;
 		}
+
+		//Je test si l'utilisateur n'existe pas déjà
 		if ($this->postsModel->verifyUser($login,$mdp) == true) {
 			$data['erreur']='erreur.php';
 			$data['erreurMessage']='Désolé mais il semblerait que cet utilisateur existe déjà';
@@ -71,8 +74,11 @@ class User extends Base
 		}
 	}
 	public function settings(){
+		// Je récupère l'utilisateur
 		isset($_SESSION['user'])?$user=$_SESSION['user']:$user=null;
 		$data['view']='settings_user.php';
+		
+		// Je mets à jour ses informations
 		if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 			$updatedData=$_POST;
 			$this->postsModel->updateUser($user,$updatedData);

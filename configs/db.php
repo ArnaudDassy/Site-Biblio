@@ -1,5 +1,4 @@
 <?php
-	
 	define ('DSN', 'mysql:host=localhost;dbname=biblio');
 	define ('USERNAME', 'root');
 	define ('PASSWORD', '');

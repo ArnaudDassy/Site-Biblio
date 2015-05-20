@@ -8,6 +8,7 @@ class Biblio extends Base
 		$this->postsModel = $biblioModel;
 	}
 	public function view() {
+		//Je récupère toutes les bibliothèques
 		$data['view']='view_biblio.php';
 		$data['biblios']=$this->postsModel->getBiblios();
 		return $data;
