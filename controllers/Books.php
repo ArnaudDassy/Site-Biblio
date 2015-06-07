@@ -31,7 +31,7 @@ class Books extends Base
 		$data['biblio']=$this->postsModel->getAllBiblio();
 		$data['id']=0;
 		$data['data']['books'] = $this->postsModel->getBooks();
-		for ($i=0; $i<count($data['data']); $i++) {
+		for ($i=0; $i<count($data['data']['books']); $i++) {
 		$data['data']['auteur'][$i]=$this->postsModel->getAuteur($data['data']['books'][$i]['auteur_id']);
 		$data['data']['maison'][$i]=$this->postsModel->getMaison($data['data']['books'][$i]['maison_id']);
 		$data['data']['type'][$i]=$this->postsModel->getType($data['data']['books'][$i]['type_id']);

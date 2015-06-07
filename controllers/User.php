@@ -85,7 +85,7 @@ class User extends Base
 		}
 		$data['user']=$this->postsModel->getUserByName($user);
 		return $data;
-		header('Location : http://localhost/Biblio/index.php?a=settings&e=user');
+		header('Location : http:/localhost/Biblio/index.php?a=settings&e=user');
 	}
 	public function disconnect(){
 		if (isset($_COOKIE['connected'])) {

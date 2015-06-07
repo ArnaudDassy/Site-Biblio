@@ -15,7 +15,7 @@
 	}
 
 	//Gestion des dossiers et des routes
-	set_include_path('controllers;models;configs;views;img;script'.get_include_path());
+	set_include_path('controllers;models;configs;views;img;script;files'.get_include_path());
 	require 'vendor/autoload.php';
 	include('configs/routes.php');
 

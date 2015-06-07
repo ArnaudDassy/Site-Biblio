@@ -49,7 +49,7 @@ class Books extends Model implements BooksRepositoryInterface
 		return $pdost->fetchAll();
 	}
 	public function getBooksByCriterion($genre,$id){
-		$sql= "SELECT * FROM livre LEFT JOIN ".$genre." ON livre.".$genre."_id=".$genre.".id WHERE ".$genre."_id=".$id;		
+		$sql= "SELECT id,titre FROM livre WHERE ".$genre."_id =".$id;		
 		$res= $this->connexion->query($sql);
 		$res_fetch=$res->fetchAll();
 		return $res_fetch;

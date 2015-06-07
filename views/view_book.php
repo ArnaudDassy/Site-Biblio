@@ -14,8 +14,10 @@
     <h4>Quatrième de couverture : </h4>
     <p class="couverture"><?php echo ($data['data'][0]['body']); ?></p>
     <p class="button_container">
-      <a href="index.php?a=update&e=book&id=<?php echo $data['data'][0]['id']; ?>" class='button'>Modifier</a>
-      <a href="index.php?a=delete&e=book&id=<?php echo $data['data'][0]['id']; ?>" class='button'>Supprimer</a>
+      <?php if($_SESSION['admin']==1) : ?>
+        <a href="index.php?a=update&e=book&id=<?php echo $data['data'][0]['id']; ?>" class='button'>Modifier</a>
+        <a href="index.php?a=delete&e=book&id=<?php echo $data['data'][0]['id']; ?>" class='button'>Supprimer</a>
+      <?php endif; ?>
     </p>
   </div>
 </section>
